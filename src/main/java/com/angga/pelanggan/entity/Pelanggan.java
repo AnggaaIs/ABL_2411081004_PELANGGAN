@@ -15,6 +15,7 @@ public class Pelanggan {
   private Long id;
   private String nama;
   private String alamat;
+  private String email;
 
   @Enumerated(EnumType.STRING)
   private JenisKelamin jenis_kelamin;
@@ -22,10 +23,11 @@ public class Pelanggan {
   public Pelanggan() {
   }
 
-  public Pelanggan(Long id, String nama, String alamat, JenisKelamin jenis_kelamin) {
+  public Pelanggan(Long id, String nama, String alamat, String email, JenisKelamin jenis_kelamin) {
     this.id = id;
     this.nama = nama;
     this.alamat = alamat;
+    this.email = email;
     this.jenis_kelamin = jenis_kelamin;
   }
 
@@ -51,6 +53,14 @@ public class Pelanggan {
 
   public void setAlamat(String alamat) {
     this.alamat = alamat;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
   }
 
   public JenisKelamin getJenis_kelamin() {
