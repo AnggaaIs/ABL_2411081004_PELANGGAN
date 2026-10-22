@@ -21,22 +21,16 @@ public class PelangganService {
     return pelangganRepository.findAll();
   }
 
-  public Pelanggan savePelanggan(Pelanggan pelanggan) {
-    return pelangganRepository.save(pelanggan);
-  }
-
-  public void deletePelanggan(Long id) {
-    pelangganRepository.deleteById(id);
-  }
-
   public Pelanggan updatePelanggan(Long id, Pelanggan pelanggan) {
-    Pelanggan existingPelanggan = pelangganRepository.findById(id).orElse(null);
-    if (existingPelanggan != null) {
-      existingPelanggan.setNama(pelanggan.getNama());
-      existingPelanggan.setAlamat(pelanggan.getAlamat());
-      existingPelanggan.setJenis_kelamin(pelanggan.getJenis_kelamin());
-      return pelangganRepository.save(existingPelanggan);
+    Pelanggan existing = pelangganRepository.findById(id).orElse(null);
+    if (existing == null) {
+      return null;
     }
-    return null;
+
+    existing.setNama(pelanggan.getNama());
+    existing.setAlamat(pelanggan.getAlamat());
+    existing.setJenis_kelamin(pelanggan.getJenis_kelamin());
+
+    return pelangganRepository.save(existing);
   }
 }
